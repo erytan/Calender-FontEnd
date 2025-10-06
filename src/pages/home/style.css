@@ -1,0 +1,542 @@
+/* Reset và font chung */
+@import url('https://fonts.googleapis.com/css2?family=Alan+Sans:wght@400;700&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Alan Sans', sans-serif;
+  background-color: #ffffff;
+  color: #1a1a1a;
+  line-height: 1.5;
+}
+
+.task-note {
+  margin-left: 10px;
+  display: flex;
+  gap: 10px;
+  color: Red
+}
+
+.task-notes {
+  color: #666
+}
+
+.days-grid>.day-card:last-child {
+  display: none;
+}
+
+.task-name {
+  color: #2B2E2F;
+}
+
+.app {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+/* Header */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 24px;
+  background: white;
+  border-bottom: 1px solid #e1e1e1;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.header h1 {
+  font-size: 24px;
+  font-weight: 600;
+}
+
+.header-controls {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.btn-add {
+  background: #f04339;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.view-toggle {
+  display: flex;
+  gap: 8px;
+  background: #f7f6f3;
+  padding: 4px;
+  border-radius: 20px;
+}
+
+.toggle-item {
+  padding: 4px 12px;
+  border-radius: 16px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.toggle-item.active {
+  background: white;
+  font-weight: 500;
+}
+
+.icons {
+  display: flex;
+  gap: 8px;
+  font-size: 18px;
+}
+
+/* Sidebar */
+.sidebar {
+  width: 200px;
+  background: white;
+  border-right: 1px solid #e1e1e1;
+  padding: 16px;
+}
+
+.sidebar ul {
+  list-style: none;
+}
+
+.sidebar li {
+  margin-bottom: 8px;
+}
+
+.change-color svg,
+.add-task svg {
+  font-size: 12px
+}
+
+.sidebar a {
+  text-decoration: none;
+  color: #1a1a1a;
+  font-size: 14px;
+  padding: 4px 8px;
+  border-radius: 4px;
+  display: block;
+}
+
+.sidebar a:hover {
+  background: #f7f6f3;
+}
+
+
+.header-actions {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  opacity: 0;
+}
+
+.selected-tags {
+  min-height: 40px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  margin-bottom: 10px;
+}
+
+/* ---------- */
+
+
+/* ---------- */
+
+
+.label-day-tags {
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+.selected-days {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  padding: 10px 5px;
+  border: 1px solid #E4D4EE;
+  border-radius: 8px;
+  width:80%;
+}
+
+.day-tags {
+  padding-top: 10px;
+}
+
+.day-tags-container {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.tag {
+  border: 1px solid #ccc;
+  margin: 2px;
+  cursor: pointer;
+  background: #d5aaf0;
+  color: white;
+  padding: 5px 5px;
+  border-radius: 5px;
+  font-size: 14px;
+  transform-origin: center;
+  transition: all 0.3s ease;
+}
+
+.tag.selected {
+  opacity: 0.2;
+  /* ẩn nút khi đã chọn → nhìn như bay đi */
+}
+
+.change-color {
+  position: relative;
+  cursor: pointer;
+}
+
+.color-option-item {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 10px;
+  padding-bottom: 5px;
+}
+
+.color-option-item span {
+  font-size: 15px;
+}
+
+.color-menu {
+  position: absolute;
+  top: 25px;
+  right: 0;
+  background: #fff;
+  padding: 5px;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+  z-index: 10;
+  width: 166px;
+
+}
+
+.day-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center
+}
+
+.color-option {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  cursor: pointer;
+  border: 1px solid #ddd;
+}
+
+/* Main Content */
+.main {
+  flex: 1;
+  padding: 24px;
+  overflow-y: auto;
+  background: url(../../images/background.jpg) no-repeat;
+    background-size: 100% 100%;
+}
+
+.days-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 16px;
+  max-width: 1500px;
+  margin: 0 auto;
+}
+.daysaas{
+    font-size: 12px;
+    padding: 2px;
+    border-radius: 5px;
+    background:#E1DFDC;
+}
+.daysaas.task-purple {
+  background: #E4D4EE;
+}
+.daysaas.task-gold {
+  background: #F1DFBB;
+}
+.daysaas.task-green {
+  background: #CFE1D7;
+}
+.daysaas.task-blue {
+  background: #CADFEE;
+}
+.task-add.task-purple {
+  color:  rgb(181, 119, 214);
+}
+.task-add.task-gold {
+  color: #DEAA50;
+}
+.task-add.task-green {
+  color: #49A87F;
+}
+.task-add.task-blue {
+  color: #148EDC;
+}
+.task-add {
+  /* padding:8px 10px;
+  margin-top: 10px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  box-shadow: rgba(181, 119, 214, 0.1) 0px 0px 0px 1px; */
+  user-select: none;
+  transition: background 20ms ease-in;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  height: 32px;
+  padding-inline: 10px;
+  border-radius: 10px;
+  white-space: nowrap;
+  font-size: 15px;
+  flex-shrink: 0;
+  line-height: 1.2;
+  min-width: 0px;
+  color: #96948F;
+  width: 100%;
+  box-shadow: rgba(181, 119, 214, 0.1) 0px 0px 0px 1px;
+  min-height: 40px;
+  margin-top: 10px;
+}
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+  display: flex;
+  justify-content: end;
+  align-items: revert-layer;
+  z-index: 100;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  /* mượt overlay */
+}
+
+.modal-overlay.show {
+  opacity: 1;
+  pointer-events: all;
+}
+
+/* Overlay bao phủ */
+/* Overlay */
+/* Overlay */
+.sidebar-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease;
+  display: flex;
+  justify-content: flex-end;
+  z-index: 1000;
+}
+
+.sidebar-overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.sidebar-overlay.closing {
+  opacity: 0;
+  visibility: hidden;
+}
+.task-item {
+  display: flex;
+  padding: 8px;
+  background: #fff;
+  border-radius: 8px;
+  margin-bottom: 6px;
+  transition: all 0.3s ease;
+}
+
+.task-item.removing {
+  opacity: 0;
+  transform: translateX(50px);
+}
+/* Panel */
+.sidebar-panel {
+  width: 400px;
+  max-width: 100%;
+  background: #fff;
+  height: 100%;
+  padding: 15px;
+
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  opacity: 1;
+}
+
+.name-sksa {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 20px
+}
+
+.name-sksa .asdkjzzz {
+  width: 80%;
+}
+
+/* Khi mở */
+.sidebar-panel.open {
+  transform: translateX(0);
+  opacity: 1;
+}
+
+/* Khi đóng → trượt ra phải + mờ dần */
+.sidebar-panel.closing {
+  transform: translateX(100%);
+  opacity: 0;
+}
+
+
+.modal {
+  background: #fff;
+  padding: 20px;
+  width: 60%;
+  transform: translateX(50px);
+  opacity: 0;
+  transition: all 0.3s ease;
+}
+
+.modal-overlay.show .modal {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.modal input {
+  width: 100%;
+  padding: 8px;
+  margin: 10px 0;
+  border: 1px solid #E4D4EE;
+  border-radius: 8px;
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  padding-top: 10px;
+}
+
+.modal-actions button {
+  padding: 6px 12px;
+  cursor: pointer;
+  background: #F9F6FB;
+  border: 1px solid #E4D4EE;
+  border-radius: 8px;
+}
+
+.day-card {
+  background: white;
+  border-radius: 8px;
+  padding: 5px 10px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  height: fit-content;
+  transition: background-color 0.3s ease;
+  position: relative;
+}
+
+.day-card h2 {
+  font-size: 16px;
+  font-weight: 600;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px
+}
+
+.day-card:hover .header-actions {
+  opacity: 1;
+  transition: opacity 0.3s ease;
+}
+
+.task-count {
+  font-size: 12px;
+  color: #666;
+  padding: 2px 6px;
+  border-radius: 10px;
+}
+
+.task-list {
+  list-style: none;
+  margin-bottom: 12px;
+}
+
+.task-item {
+  display: flex;
+  padding: 8px 10px;
+  border-bottom: 1px solid #f7f6f3;
+  flex-direction: column-reverse;
+  gap: 10px;
+  background: #FFF;
+  border-radius: 10px;
+  margin-top: 10px
+}
+
+.task-item:last-child {
+  border-bottom: none;
+}
+
+.task-item input[type="checkbox"] {
+  margin-right: 8px;
+  width: 16px;
+  height: 16px;
+}
+
+.btn-add-task {
+  width: 100%;
+  background: none;
+  border: 1px dashed #ccc;
+  color: #666;
+  padding: 8px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.btn-add-task:hover {
+  background: #f7f6f3;
+}
+
+/* Responsive: Trên mobile, stack sidebar và grid */
+@media (max-width: 768px) {
+  .app {
+    flex-direction: column;
+  }
+
+  .sidebar {
+    width: 100%;
+    order: 2;
+  }
+
+  .days-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+
+  .header {
+    flex-wrap: wrap;
+  }
+}

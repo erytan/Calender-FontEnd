@@ -1,0 +1,195 @@
+.done-table {
+    width: 100%;
+    margin: 20px auto;
+    padding: 10px;
+    border-radius: 12px;
+    background: #ffffff;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    overflow-x: auto;
+}
+
+.done-table h2 {
+    margin-bottom: 16px;
+    font-size: 20px;
+    font-weight: 600;
+    color: #333;
+}
+.alsdkjdas{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+    .done-table ul {
+        list-style: none;
+        /* ❌ xóa dấu chấm */
+        padding-left: 0;
+        /* bỏ khoảng cách mặc định */
+        margin: 0;
+    }
+.done-table table tr {
+  transition: all 0.3s ease;
+}
+
+.done-table table tr.removing {
+  opacity: 0;
+  transform: translateX(50px);
+}
+  
+/* Table mặc định */
+.done-table table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 15px;
+}
+
+.done-table thead {
+    background: #f5f7fa;
+}
+
+.done-table th,
+.done-table td {
+    text-align: left;
+    padding: 12px 16px;
+    border-bottom: 1px solid #eaeaea;
+}
+
+.done-table th {
+    font-weight: 600;
+    color: #555;
+}
+
+.done-table tbody tr:hover {
+    background: #f9fbfd;
+    transition: background 0.2s ease-in-out;
+}
+.pagination-controls {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  margin: 15px 0;
+  font-size: 14px;
+  color: #444;
+  gap: 8px;
+}
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+  margin: 20px 0;
+  flex-wrap: wrap; /* để responsive khi nhiều trang */
+}
+
+.pagination button {
+  background: #fff;
+  border: 1px solid #ddd;
+  color: #333;
+  padding: 8px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: all 0.2s ease-in-out;
+}
+
+.pagination button:hover:not(:disabled) {
+  background: #f0f4f8;
+  border-color: #bbb;
+}
+
+.pagination button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+.done-table table tr> td:first-child{
+    display: flex;
+    align-items: center;
+}
+.pagination button.active {
+  background: #e1aff8;
+  color: #fff;
+  border-color: #E5D4ED;
+  font-weight: bold;
+}
+
+.pagination-controls label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: 500;
+}
+
+.pagination-controls select {
+  padding: 6px 12px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background: #fff;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+}
+
+.pagination-controls select:hover {
+  border-color: #007bff;
+  box-shadow: 0 2px 6px rgba(0,123,255,0.15);
+}
+
+.pagination-controls select:focus {
+  outline: none;
+  border-color: #007bff;
+  box-shadow: 0 0 0 2px rgba(0,123,255,0.2);
+}
+
+/* Responsive: hiển thị dạng card khi màn nhỏ */
+@media (max-width: 768px) {
+
+    .done-table table,
+    .done-table thead,
+    .done-table tbody,
+    .done-table th,
+    .done-table td,
+    .done-table tr {
+        display: block;
+        width: 100%;
+    }
+  .pagination button {
+    padding: 6px 10px;
+    font-size: 13px;
+  }
+    .done-table thead {
+        display: none;
+    }
+
+    .done-table ul {
+        list-style: none;
+        /* ❌ xóa dấu chấm */
+        padding-left: 0;
+        /* bỏ khoảng cách mặc định */
+        margin: 0;
+    }
+
+    
+
+    .done-table tr {
+        margin-bottom: 15px;
+        border-radius: 8px;
+        background: #fff;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+        padding: 12px;
+    }
+
+    .done-table td {
+        border: none;
+        padding: 8px 10px;
+        position: relative;
+        font-size: 14px;
+    }
+
+    .done-table td::before {
+        content: attr(data-label);
+        font-weight: 600;
+        color: #666;
+        display: block;
+    }
+}
