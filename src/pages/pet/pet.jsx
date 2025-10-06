@@ -182,13 +182,12 @@ export class WebPet {
         const h = now.getHours();
         const m = now.getMinutes();
 
-        // 🌙 Ngủ từ 15:52 trở đi
-        if ((h > 15 || (h === 15 && m >= 56)) && this.state !== "sleep") {
+        if ((h > 17 || (h === 17 && m >= 0)) && this.state !== "sleep") {
             this.sleep();
         }
         // 🌞 Thức từ 7:30 sáng đến trước 15:52
         else if (
-            ((h === 7 && m >= 30) || (h > 7 && (h < 15 || (h === 15 && m < 52)))) &&
+            ((h === 7 && m >= 30) || (h > 7 && (h < 17 || (h === 17 && m < 0)))) &&
             this.state === "sleep"
         ) {
             this.wakeUp();
