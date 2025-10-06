@@ -7,4 +7,7 @@ export default defineConfig({
   define: {
     'process.env':{}, // Polyfill process.env
   },
+   build: {
+    outDir: 'dist', // 👈 phải khớp với firebase.json
+  },
 })
