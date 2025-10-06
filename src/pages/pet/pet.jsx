@@ -196,14 +196,4 @@ export class WebPet {
 
         setTimeout(() => this.checkTime(), 60000); // kiểm tra mỗi phút
     }
-
-    sleep() {
-        this.stopMoving();
-        this.setAction("sleep");
-    }
-
-    wakeUp() {
-        this.setAction("run");
-        this.startMoving();
-    }
 }

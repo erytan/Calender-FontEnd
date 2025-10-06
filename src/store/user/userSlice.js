@@ -33,21 +33,21 @@ export const userSlice = createSlice({
       state.current = { ...state.current, ...action.payload };
     },
   },
-  extraReducers: (builder) => {
-    builder.addCase(action.getCurrent.pending, (state) => {
-      state.isLoading = true;
-    });
-    builder.addCase(action.getCurrent.fulfilled, (state, action) => {
-      state.isLoading = false;
-      state.current = action.payload;
-    });
-    builder.addCase(action.getCurrent.rejected, (state, action) => {
-      state.isLoading = false;
-      state.current = null;
-      state.isLoggedIn = false;
-      state.token = null;
-    });
-  },
+  // extraReducers: (builder) => {
+  //   builder.addCase(action.getCurrent.pending, (state) => {
+  //     state.isLoading = true;
+  //   });
+  //   builder.addCase(action.getCurrent.fulfilled, (state, action) => {
+  //     state.isLoading = false;
+  //     state.current = action.payload;
+  //   });
+  //   builder.addCase(action.getCurrent.rejected, (state, action) => {
+  //     state.isLoading = false;
+  //     state.current = null;
+  //     state.isLoggedIn = false;
+  //     state.token = null;
+  //   });
+  // },
 });
 
 export const { register, login, logout,updateCurrentUser } = userSlice.actions;
