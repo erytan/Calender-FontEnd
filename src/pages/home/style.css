@@ -240,7 +240,14 @@ body {
   cursor: pointer;
   border: 1px solid #ddd;
 }
-
+.logoheader{
+  width:16%
+}
+.header-left{
+  display: flex;
+  gap:20px;
+  align-items: center;
+}
 /* Main Content */
 .main {
   flex: 1;

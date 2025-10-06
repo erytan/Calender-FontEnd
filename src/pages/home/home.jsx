@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import DayCard from "./dayCard";
 import { apiGetKhachHang } from "../../apis/khacHang";
 import DoneTable from "../../components/doneTask";
+import LogoHeader from "../../assets/Logoheader.png"
 const App = () => {
   const [khachHangs, setKhachHangs] = useState([]);
   const [view, setView] = useState("daily")
@@ -32,7 +33,10 @@ const App = () => {
   return (
     <div className="app">
       <header className="header">
-        <h1>Weekly To Do List</h1>
+        <div class="header-left">
+          <img className="logoheader" src={LogoHeader} loading="lazy" />
+          <h1>Weekly To Do List</h1>
+        </div>
         <div className="header-controls">
           <div className="view-toggle">
             <span className={`toggle-item ${view === "daily" ? "active" : ""}`}
@@ -64,9 +68,9 @@ const App = () => {
             ))}
           </div>
         )}
-          {view === "done" && (
+        {view === "done" && (
           <div className="done-view">
-              <DoneTable khachHangs={khachHangs} setKhachHangs={setKhachHangs} />
+            <DoneTable khachHangs={khachHangs} setKhachHangs={setKhachHangs} />
           </div>
         )}
 
