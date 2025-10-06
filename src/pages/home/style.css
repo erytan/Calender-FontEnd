@@ -17,12 +17,13 @@ body {
 .task-note {
   margin-left: 10px;
   display: flex;
-  gap: 10px;
-  color: Red
+  color: Red;
+  flex-direction: column;
 }
 
 .task-notes {
-  color: #666
+  color: #666;
+  content:"-"
 }
 
 .days-grid>.day-card:last-child {

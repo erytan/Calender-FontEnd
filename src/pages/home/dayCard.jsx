@@ -38,6 +38,7 @@ const DayCard = ({ day, khachHangs, setKhachHangs }) => {
       ...prevNotes,
       [taskId]: newNote,
     }));
+    
   };
   const dayLabels = {
     thu2: "Thứ 2",
@@ -68,32 +69,32 @@ const DayCard = ({ day, khachHangs, setKhachHangs }) => {
     }, 300); // thời gian bằng transition
   };
 
-  
+
   // Tải dữ liệu và màu nền từ database
+  // Đặt sau useEffect hiện tại
   useEffect(() => {
     if (!day || !day.name) return;
-
-    const fetchDayConfig = async () => {
-      try {
-        const res = await apiGetDayConfig(day.name);
-        if (res.success && res.data && res.data.bgColor) {
-          setBgColor(res.data.bgColor);
-        }
-      } catch (err) {
-        console.error("Lỗi khi lấy màu nền:", err.message);
-      }
-    };
-
-    fetchDayConfig();
 
     const key = dayKeyMap[day.name];
     if (!key) return;
 
-    // ✅ lọc theo value + active
+    // Lọc các task dựa trên trạng thái khachHangs mới nhất
     const filteredTasks = khachHangs.filter(
       (kh) => kh.ngayTrongTuan?.[key]?.value === 1 && kh.ngayTrongTuan?.[key]?.active
     );
-
+    const fetchBgColor = async ()=>{
+      try{
+        const res = await apiGetDayConfig(day.name);
+        if(res.success && res.data?.bgColor){
+          setBgColor(res.data.bgColor);
+        }
+      }catch(err){
+        console.error("Lỗi khi tải màu nền", err);
+      }
+    }
+    if(day&& day.name){
+      fetchBgColor();
+    }
     setTasks(
       filteredTasks.map((kh) => ({
         id: kh._id,
@@ -119,8 +120,8 @@ const DayCard = ({ day, khachHangs, setKhachHangs }) => {
     if (filteredTasks.length > 0) {
       fetchNotes();
     }
-  }, [khachHangs, day?.name]);
 
+  }, [khachHangs, day.name, day]); // Thêm khachHangs vào dependency array
 
   const toggleDay = (dayKey) => {
     setSelectedDays((prev) => ({ ...prev, [dayKey]: !prev[dayKey] }));
@@ -143,15 +144,16 @@ const DayCard = ({ day, khachHangs, setKhachHangs }) => {
 
   const handleCreateKhachHang = async () => {
     if (!tenKhachHang.trim()) return alert("Tên khách hàng không được để trống");
-    const hasSelectedDay = Object.values(selectedDays).some((val)=>val===true);
-    if(!hasSelectedDay){
+    const hasSelectedDay = Object.values(selectedDays).some((val) => val === true);
+    if (!hasSelectedDay) {
       return alert("Vui lòng chọn ít nhất một ngày làm việc!!")
     }
 
     const ngayTrongTuan = Object.fromEntries(
-      Object.entries(selectedDays).map(([key, val]) => [key, { value: val ? 1 : 0, active: true,
-          date: val ? getDateOfWeek(key) : null 
-       }])
+      Object.entries(selectedDays).map(([key, val]) => [key, {
+        value: val ? 1 : 0, active: true,
+        date: val ? getDateOfWeek(key) : null
+      }])
     );
 
     setLoading(true);
@@ -235,28 +237,28 @@ const DayCard = ({ day, khachHangs, setKhachHangs }) => {
     );
   };
   const getDateOfWeek = (dayKey) => {
-  const today = new Date();
-  const currentDay = today.getDay(); // Chủ nhật = 0, Thứ 2 = 1, ..., Thứ 7 = 6
+    const today = new Date();
+    const currentDay = today.getDay(); // Chủ nhật = 0, Thứ 2 = 1, ..., Thứ 7 = 6
 
-  const map = {
-    thu2: 1,
-    thu3: 2,
-    thu4: 3,
-    thu5: 4,
-    thu6: 5,
-    thu7: 6,
-    cN: 0
+    const map = {
+      thu2: 1,
+      thu3: 2,
+      thu4: 3,
+      thu5: 4,
+      thu6: 5,
+      thu7: 6,
+      cN: 0
+    };
+
+    const targetDay = map[dayKey];
+    const diff = targetDay - currentDay;
+
+    // lấy ra ngày trong tuần (nếu diff < 0 tức là tuần sau)
+    const targetDate = new Date(today);
+    targetDate.setDate(today.getDate() + diff + (diff < 0 ? 7 : 0));
+
+    return targetDate.toISOString().split("T")[0]; // yyyy-mm-dd
   };
-
-  const targetDay = map[dayKey];
-  const diff = targetDay - currentDay;
-
-  // lấy ra ngày trong tuần (nếu diff < 0 tức là tuần sau)
-  const targetDate = new Date(today);
-  targetDate.setDate(today.getDate() + diff + (diff < 0 ? 7 : 0));
-
-  return targetDate.toISOString().split("T")[0]; // yyyy-mm-dd
-};
 
   return (
     <div className="day-card" style={{ backgroundColor: bgColor }}>

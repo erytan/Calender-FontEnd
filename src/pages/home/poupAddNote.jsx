@@ -69,9 +69,9 @@ const NotePopup = ({ task, onClose, onUpdateSuccess, onNoteUpdateSuccess }) => {
         };
         const updateRes = await apiUpdateKhachHang(updateData, task.id);
         if (updateRes.success === true) {
-          alert("Cập nhật thông tin khách hàng thành công!");
           const updatedTask = {
             id: task.id,
+            tenKhachhang: customerName.trim(),
             name: customerName || task.name,
             ngayTrongTuan: workDays,
           };
