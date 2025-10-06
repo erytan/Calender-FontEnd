@@ -23,7 +23,7 @@ body {
 
 .task-notes {
   color: #666;
-  content:"-"
+  content: "-"
 }
 
 .days-grid>.day-card:last-child {
@@ -54,6 +54,9 @@ body {
 .header h1 {
   font-size: 24px;
   font-weight: 600;
+  background: linear-gradient(90deg, #00d2ff 0%, #3a7bd5 50%, #005ce6 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .header-controls {
@@ -166,7 +169,7 @@ body {
   padding: 10px 5px;
   border: 1px solid #E4D4EE;
   border-radius: 8px;
-  width:80%;
+  width: 80%;
 }
 
 .day-tags {
@@ -241,21 +244,24 @@ body {
   cursor: pointer;
   border: 1px solid #ddd;
 }
-.logoheader{
-  width:16%
+
+.logoheader {
+  width: 16%
 }
-.header-left{
+
+.header-left {
   display: flex;
-  gap:20px;
+  gap: 20px;
   align-items: center;
 }
+
 /* Main Content */
 .main {
   flex: 1;
   padding: 24px;
   overflow-y: auto;
   background: url(../../images/background.jpg) no-repeat;
-    background-size: 100% 100%;
+  background-size: 100% 100%;
 }
 
 .days-grid {
@@ -265,36 +271,46 @@ body {
   max-width: 1500px;
   margin: 0 auto;
 }
-.daysaas{
-    font-size: 12px;
-    padding: 2px;
-    border-radius: 5px;
-    background:#E1DFDC;
+
+.daysaas {
+  font-size: 12px;
+  padding: 2px;
+  border-radius: 5px;
+  background: #E1DFDC;
 }
+
 .daysaas.task-purple {
   background: #E4D4EE;
 }
+
 .daysaas.task-gold {
   background: #F1DFBB;
 }
+
 .daysaas.task-green {
   background: #CFE1D7;
 }
+
 .daysaas.task-blue {
   background: #CADFEE;
 }
+
 .task-add.task-purple {
-  color:  rgb(181, 119, 214);
+  color: rgb(181, 119, 214);
 }
+
 .task-add.task-gold {
   color: #DEAA50;
 }
+
 .task-add.task-green {
   color: #49A87F;
 }
+
 .task-add.task-blue {
   color: #148EDC;
 }
+
 .task-add {
   /* padding:8px 10px;
   margin-top: 10px;
@@ -370,6 +386,7 @@ body {
   opacity: 0;
   visibility: hidden;
 }
+
 .task-item {
   display: flex;
   padding: 8px;
@@ -383,6 +400,7 @@ body {
   opacity: 0;
   transform: translateX(50px);
 }
+
 /* Panel */
 .sidebar-panel {
   width: 400px;
